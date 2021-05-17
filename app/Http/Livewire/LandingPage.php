@@ -13,11 +13,18 @@ class LandingPage extends Component
 {
     
     public $email;
-
+    public $showSubscribe = false;
+    public $showSuccess = false;
     protected $rules = [
         'email' => 'required|email:filter|unique:subscribers,email',
     ];
 
+    public function mount() {
+        if(request()->has('verified' && request()->verified == 1)) {
+
+            $this->showSuccess = true;
+        }
+    }
 
     public function subscribe() {
 
@@ -42,7 +49,8 @@ class LandingPage extends Component
         }, $deadLockRetries = 5); 
             
             $this->reset('email');
-       
+            $this->showSubscribe = false;
+            $this->showSuccess = true;
     }
 
     public function render()

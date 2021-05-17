@@ -2,8 +2,8 @@
     <div 
     class="flex flex-col bg-indigo-900 h-screen"
     x-data="{
-        showSubscribe: false,
-        showSuccess: false,
+        showSubscribe: @entangle('showSubscribe'),
+        showSuccess:  @entangle('showSuccess'),
     }" >
         <nav class="pt-5 flex justify-between conatiner mx-auto text-indigo-200">
             <a href="/" class="text-4xl font-bold">
@@ -72,9 +72,15 @@
          <p class="text-white font-extrabold text-5xl text-center mt-16">
              Great!
          </p>
-         <p class="text-white text-3xl text-center">
-             See you in your inbox.
-         </p>
+         @if(request()->has('verified' && request()->verified == 1))
+            <p class="text-white text-3xl text-center">
+                Thanks for confirming!
+            </p>
+         @else
+            <p class="text-white text-3xl text-center">
+                See you in your inbox.
+            </p>
+         @endif
       </x-modal>
     </div>
 </div>
