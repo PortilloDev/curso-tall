@@ -10,9 +10,7 @@ class SubscriberController extends Controller
 
     public function all()
     {
-        return view('subscriber.all')->with([
-            'subscribers' => Subscriber::all(),
-        ]);
+        return view('subscriber.all');
     }
 
 
