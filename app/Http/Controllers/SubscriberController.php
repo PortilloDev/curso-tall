@@ -7,8 +7,18 @@ use Illuminate\Http\Request;
 
 class SubscriberController extends Controller
 {
-    public function verify(Subscriber $subscriber) {
-        if (! $subscriber->hasVerifiedEmail()) {
+
+    public function all()
+    {
+        return view('subscriber.all')->with([
+            'subscribers' => Subscriber::all(),
+        ]);
+    }
+
+
+    public function verify(Subscriber $subscriber) 
+    {
+        if (!$subscriber->hasVerifiedEmail()) {
             $subscriber->markEmailAsVerified();
         }
 

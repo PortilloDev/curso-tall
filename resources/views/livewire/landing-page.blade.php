@@ -48,7 +48,7 @@
                 type="email"
                 name="email"
                 placeholder="Email address"
-                wire:model="email"
+                wire:model.defer="email"
             >
             </x-input>
             <span class="text-gray-100 text-xs">
@@ -61,7 +61,12 @@
                
             </span>
             <x-button class="px-5 py-3 mt-5 w-80 bg-blue-500 justify-center">
-                Get In
+                <span class="animate-spin" wire:loading wire:target="subscribe">
+                    &#9696;
+                </span>
+                <span wire:loading.remove wire:target="subscribe">
+                    Get In
+                </span>
             </x-button>
         </form>
       </x-modal>
@@ -72,7 +77,7 @@
          <p class="text-white font-extrabold text-5xl text-center mt-16">
              Great!
          </p>
-         @if(request()->has('verified' && request()->verified == 1))
+         @if(request()->has('verified') && request()->verified == 1)
             <p class="text-white text-3xl text-center">
                 Thanks for confirming!
             </p>
