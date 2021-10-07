@@ -1,3 +1,3 @@
 <x-guest-layout>
-    <x-application-logo></x-application-logo>
+    <livewire:landing-page></livewire:landing-page>
 </x-guest-layout>
